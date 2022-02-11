@@ -2,6 +2,7 @@
 # Сообщить, к какому времени года относится месяц (зима,
 # весна, лето, осень). Напишите решения через list и dict.
 
+
 # Первое решение через list:
 seasons = [
     'winter', 'winter', 'spring', 'spring', 'spring', 'summer',
@@ -9,7 +10,12 @@ seasons = [
 ]
 
 monthnum = int(input('Please, insert the month (number): ')) - 1
-print(f'The season is {seasons[monthnum]}.')
+
+if monthnum >= 0 and monthnum < 12:
+    print(f'The season is {seasons[monthnum]}.')
+else:
+    print('Error, there are only 12 months in the year!')
+
 
 # Второе решение через dict:
 seasons = {
@@ -18,10 +24,14 @@ seasons = {
 }
 
 monthnum = int(input('Please, insert the month (number): '))
-print(f'The season is {seasons.get(monthnum)}.')
+
+if monthnum > 0 and monthnum <= 12:
+    print(f'The season is {seasons.get(monthnum)}.')
+else:
+    print('Error, there are only 12 months in the year!')
+
 
 # Третье решение через совмещение list и dict:
-
 seasons = {
     'winter': [12, 1, 2],
     'spring': [3, 4, 5],
@@ -31,6 +41,10 @@ seasons = {
 
 monthnum = int(input('Please, insert the month (number): '))
 
-for season in seasons.keys():
-    if monthnum in seasons.setdefault(season):
-        print(f'The season is {season}.')
+if monthnum > 0 and monthnum <= 12:
+    for season in seasons.keys():
+        if monthnum in seasons.setdefault(season):
+            print(f'The season is {season}.')
+
+else:
+    print('Error, there are only 12 months in the year!')
